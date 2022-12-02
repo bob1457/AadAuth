@@ -1,0 +1,31 @@
+<h1>Hello World</h1>
+
+<button (click)="login()" [hidden]="loginDisplay">Login</button>
+<button (click)="logout()" [hidden]="!loginDisplay">Logout</button>
+
+<div *ngIf="loginDisplay">
+    <h2>We are logged in...</h2>
+
+
+    <h3>Profile</h3>
+    <button (click)="getProfile()">Get profile information</button>
+    <p></p>
+    <div [hidden]="!profileData">
+        <p>User ID: {{profileData?.id}}</p>
+        <p>Display Name: {{profileData?.displayName}}</p>                
+        <p>First Name: {{profileData?.givenName}}</p>
+        <p>Last Name: {{profileData?.surname}}</p>
+        <p>Email: {{profileData?.userPrincipalName}}</p>
+    </div>
+
+    <h2>Get Orders</h2>
+    <button (click)="getOrders()">Get Orders</button>
+    <div *ngIf="orderData">
+        <ul>
+            <li *ngFor="let order of orderData">
+                {{order}}
+            </li>
+        </ul>
+    </div>
+
+</div>
